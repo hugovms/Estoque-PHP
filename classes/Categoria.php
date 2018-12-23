@@ -3,6 +3,7 @@
 class Categoria{
     public $id;
     public $nome;
+    public $produtos;
 
     public function __construct($id = false)
     {
@@ -59,6 +60,11 @@ class Categoria{
         $linha = $stmt->fetch();
         $this->nome = $linha['nome'];
     
+    }
+
+    public function carregarProdutos()
+    {
+        $this->produtos = Produto::listarPorCategoria($this->id);
     }
 
 }
